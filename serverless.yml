@@ -1,0 +1,19 @@
+org: manuelantunes
+app: teste-cantarin
+service: teste-cantarin
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.9
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - httpApi:
+          path: /
+          method: post
+
+plugins:
+  - serverless-offline
