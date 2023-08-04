@@ -6,7 +6,7 @@ env:
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
@@ -27,6 +27,9 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+    - uses: actions/setup-python@v4 
+      with:
+        python-version: 'pypy3.9' 
     - run: npm ci
     - name: serverless deploy
       uses: serverless/github-action@v3.2
